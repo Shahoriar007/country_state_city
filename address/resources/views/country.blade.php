@@ -12,6 +12,8 @@
         <a href="{{url('/country/manage_country')}}">
         <button type="button" class="btn btn-success">Add Country</button>
         </a>
+
+        <h1>Checking branching</h1>
     </div>
 
     <div class="table-responsive m-b-40">
