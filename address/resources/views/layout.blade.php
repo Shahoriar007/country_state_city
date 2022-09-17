@@ -47,6 +47,11 @@
                     <a class="js-arrow" href="{{url('/country')}}">
                         <i class="fas fa-tachometer-alt"></i>Country</a>
                 </li>
+
+                <li class="@yield('dashboard_select')">
+                    <a class="js-arrow" href="{{url('/state')}}">
+                        <i class="fas fa-tachometer-alt"></i>State</a>
+                </li>
                 
                
             </ul>

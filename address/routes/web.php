@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\StateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +36,22 @@ Route::post('/country/manage_country_process',[CountryController::class,'manage_
 Route::get('/country/restore_country/{id}',[CountryController::class,'restore_country']);
 // permanent delete
 Route::get('/country/permanent_delete/{id}',[CountryController::class,'permanent_delete']);
+
+
+//State
+
+// read
+Route::get('/state',[StateController::class,'index']);
+// delete
+Route::get('/state/delete/{id}',[StateController::class,'delete']);
+//create
+Route::get('/state/manage_state',[StateController::class,'manage_state']);
+//edit
+Route::get('/state/manage_state/{id}',[StateController::class,'manage_state']);
+//form
+Route::post('/state/manage_state_process',[StateController::class,'manage_state_process'])->name('state.manage_state_process');
+
+
+
 
 
