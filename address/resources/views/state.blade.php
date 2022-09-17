@@ -58,6 +58,40 @@
         <br><br>
 
         <!-- Soft Deletes -->
-        
+        <table class="table table-borderless table-data3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Country</th>
+                    <th>State</th>
+                    <th>Action</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach($trashPosts as $list)
+
+                <tr>
+                    <td>{{$list->id}}</td>
+                    <td>{{$list->country_id}}</td>
+                    <td>{{$list->state}}</td>
+                    <td>
+
+                        <a href="{{url('/state/restore_state/')}}/{{$list->id}}">
+                            <button type="button" class="btn btn-success">Restore</button>
+                        </a>
+
+                        <a href="{{url('/state/permanent_delete/')}}/{{$list->id}}">
+                            <button type="button" class="btn btn-danger">Permanent Delete</button>
+                        </a>
+                    </td>
+                </tr>
+
+                @endforeach
+
+            </tbody>
+        </table>
     </div>
 @endsection
+        

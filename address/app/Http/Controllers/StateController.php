@@ -15,8 +15,8 @@ class StateController extends Controller
     public function index()
     {
         $result=State::simplePaginate(5);
-        
-        return view('/state',compact('result'));
+        $trashPosts=State::onlyTrashed()->simplePaginate(5);
+        return view('/state', compact('result','trashPosts'));
     }
 
     public function delete(Request $request, $id)
@@ -68,6 +68,24 @@ class StateController extends Controller
 
         // Show success massage
         $request->session()->flash('message', $msg);
+        return redirect('/state');
+    }
+
+    public function restore_state(Request $request, $id)
+    {
+        $model=State::withTrashed()->find($id);
+        $model->restore();
+
+        $request->session()->flash('message','State Restored');
+        return redirect('/state');
+    }
+
+    public function permanent_delete(Request $request, $id)
+    {
+        $model=State::withTrashed()->find($id);
+        $model->forceDelete();
+
+        $request->session()->flash('message','State Force Deleted');
         return redirect('/state');
     }
 }
