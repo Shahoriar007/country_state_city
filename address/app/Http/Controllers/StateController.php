@@ -70,7 +70,4 @@ class StateController extends Controller
         $request->session()->flash('message', $msg);
         return redirect('/state');
     }
-    
 }
-
-
