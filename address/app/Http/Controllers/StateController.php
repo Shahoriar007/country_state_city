@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\state;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StateController extends Controller
 {
@@ -41,6 +42,10 @@ class StateController extends Controller
             $result['state']='';
             $result['id']='0';
         }
+
+        $result['country']=DB::table('countries')->whereNull(['deleted_at'])->get();
+        
+
         return view('/manage_state', $result);
     }
 

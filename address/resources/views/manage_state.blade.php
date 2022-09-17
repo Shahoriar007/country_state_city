@@ -27,13 +27,28 @@
 
                     <div class="form-group">
                         <label for="country_id" class="control-label mb-1">Country</label>
-                        <input id="country_id"  value="{{$country_id}}" name="country_id" type="text" class="form-control" aria-required="true" aria-invalid="false" required >
+                        <select id="country_id" name="country_id" type="text" class="form-control" aria-required="true" aria-invalid="false" required>
+                           
+                        <option>Select Countries</option>
+
+                            @foreach($country as $list)
+                                @if($country_id==$list->id)
+                                    <option selected value="{{$list->id}}">
+                                @else
+                                    <option value="{{$list->id}}">
+                                @endif
+                                    {{$list->country}}</option>
+                            @endforeach
+
+                        </select>
                     </div>
 
                     <div class="form-group">
                         <label for="state" class="control-label mb-1">State</label>
                         <input id="state"  value="{{$state}}" name="state" type="text" class="form-control" aria-required="true" aria-invalid="false" required >
                     </div>
+
+                    
 
                     @error('state')
                     {{$message}}
